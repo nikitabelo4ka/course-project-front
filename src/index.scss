@@ -1,0 +1,63 @@
+:root[data-theme="light"] {
+    --background-color: #ffffff;
+    --navbarbackground-color: #000000;
+    --color: #000000;
+    --modaltext-color: #000000;
+}
+  
+:root[data-theme="dark"] {
+    --background-color: #000000d1;
+    --navbarbackground-color: #616161;
+    --color: #ffffff;
+    --itembackground-color: #616161;
+    --modaltext-color: #000000;
+}
+  
+body {
+    background: var(--background-color);
+    color: var(--color);
+}
+
+.navbar {
+    background: var(--navbarbackground-color);
+}
+
+.collection-item {
+    background: var(--itembackground-color);
+}
+
+.tag {
+    background: var(--itembackground-color);
+}
+
+.auth-form {
+    background: var(--itembackground-color);
+}
+
+.auth-form > h2,a {
+    color: var(--color);
+    background: var(--itembackground-color);
+}
+
+.btn-outline-success {
+    border-color: var(--color);
+    color: var(--color);
+}
+
+.thead-dark > tr > th {
+    background: var(--itembackground-color);
+    color: var(--color);
+}
+
+.theme-label {
+    color: var(--color);;
+}
+
+.modal-dialog > div {
+    background: var(--background-color);
+    color: var(--color);
+}
+
+.rti--tag {
+    color: var(--modaltext-color);
+}
