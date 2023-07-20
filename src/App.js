@@ -19,6 +19,7 @@ const App = observer(() => {
                 user.setIsAuth(true)
             }).finally(() => setLoading(false));
         }
+        setLoading(false);
     }, [])
 
     if (loading) {
