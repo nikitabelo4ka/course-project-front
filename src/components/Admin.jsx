@@ -13,7 +13,7 @@ const Admin = observer(() => {
 
     const {user} = useContext(Context);
 
-    const token = jwtDecode(localStorage.getItem("token"));
+    const token = localStorage.getItem('token') ? jwtDecode(localStorage.getItem("token")) : null;
 
     useEffect(() => {
         fetchUsers().then(data => user.setUsers(data));

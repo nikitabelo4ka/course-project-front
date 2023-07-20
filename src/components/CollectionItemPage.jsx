@@ -18,7 +18,7 @@ const CollectionItemPage = observer(() => {
 
     const {id} = useParams();
 
-    const token = jwtDecode(localStorage.getItem("token"));
+    const token = localStorage.getItem('token') ? jwtDecode(localStorage.getItem("token")) : null;
 
     const [collectionItemInfo, setCollectionItemInfo] = useState({});
     const [collectionInfo, setCollectionInfo] = useState({});

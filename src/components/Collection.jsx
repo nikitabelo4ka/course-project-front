@@ -11,7 +11,7 @@ const Collection = observer(({collection}) => {
 
     const history = useNavigate();
 
-    const token = jwtDecode(localStorage.getItem("token"));
+    const token = localStorage.getItem('token') ? jwtDecode(localStorage.getItem("token")) : null;
 
     const [modalVisisble, setModalVisible] = useState(false);
     const [isModify, setIsModify] = useState(false);

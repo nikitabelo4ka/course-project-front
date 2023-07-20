@@ -25,11 +25,11 @@ const NavBar = observer(() => {
     const [isUser, setIsUser] = useState(true);
     const [itemsToSearch, setItemsToSearch] = useState([]);
 
-    const token = jwtDecode(localStorage.getItem("token"));
+    const token = localStorage.getItem('token') ? jwtDecode(localStorage.getItem("token")) : null;
 
     useEffect(() => {
 
-        if(token.role === "USER") {
+        if(token && token.role === "USER") {
             setIsUser(true);
         } else {
             setIsUser(false);

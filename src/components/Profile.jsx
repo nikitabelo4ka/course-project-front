@@ -11,7 +11,7 @@ import '../styles/profile.css';
 
 const Profile = observer(() => {
 
-    const token = jwtDecode(localStorage.getItem("token"));
+    const token = localStorage.getItem('token') ? jwtDecode(localStorage.getItem("token")) : null;
 
     const {collection} = useContext(Context);
 

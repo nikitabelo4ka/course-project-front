@@ -11,7 +11,7 @@ const NewCollectionModal = ({show, onHide, userId, info, isModify}) => {
 
     const {collection} = useContext(Context);
 
-    const token = jwtDecode(localStorage.getItem("token"));
+    const token = localStorage.getItem('token') ? jwtDecode(localStorage.getItem("token")) : null;
 
     const [name, setName] = useState('');
     const [theme, setTheme] = useState('');
