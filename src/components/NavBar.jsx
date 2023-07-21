@@ -53,7 +53,7 @@ const NavBar = observer(() => {
                     )}
                 </ThemeContext.Consumer>
                 {user.isAuth ?
-                    <Nav style={{color: 'black', fontSize: "20px", marginLeft: "51vw", width: "15vw"}}>
+                    <Nav style={{color: 'black', fontSize: "20px", marginLeft: "51vw"}}>
                         <Button style={{fontSize: "20px", color: 'white'}} variant={"outline-dark"} onClick={() => logOut()} className="ml-2">
                             Log out
                         </Button>
