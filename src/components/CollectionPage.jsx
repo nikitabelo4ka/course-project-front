@@ -63,7 +63,7 @@ const CollectionPage = observer(() => {
                     <h2 className="collection-page-info-text">Theme: {item.theme}</h2>
                     <h2 className="collection-page-info-text">Description: {item.description}</h2>
                     <h2 className="collection-page-info-text">Number of items: {collectionItems.collectionItems.length}</h2>
-                    <Button className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "btn btn-outline-dark add-collection-item-btn" : "none") : "none"} onClick={() => {setModalVisible(true); setCollectionItemId(0)}}>Create new collection item</Button>
+                    <Button className={token === null || token.id !== item.userId ? (token.role === "ADMIN" || token.id === item.userId ? "btn btn-outline-dark add-collection-item-btn" : "none") : "none"} onClick={() => {setModalVisible(true); setCollectionItemId(0)}}>Create new collection item</Button>
                 </Col>
                 <MaterialReactTable
                     enableRowActions
