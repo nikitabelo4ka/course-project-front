@@ -10,11 +10,14 @@ import {observer} from 'mobx-react';
 import NewCollectionItemModal from "../modals/NewCollectionItemModal";
 import { MaterialReactTable } from 'material-react-table';
 import {Context} from "../index";
+import jwtDecode from 'jwt-decode';
 import "../styles/collectionPage.css";
 
 const CollectionPage = observer(() => {
 
     const history = useNavigate();
+
+    const token = localStorage.getItem('token') ? jwtDecode(localStorage.getItem("token")) : null;
 
     const {id} = useParams();
     const {collectionItems} = useContext(Context);
@@ -31,15 +34,15 @@ const CollectionPage = observer(() => {
             let collectionEntries = Object.entries(data);
             const customFieldsKeys = [];
             collectionEntries.map((item) => {
-                if(item[0] === 'integerField1' || item[0] === 'integerField2' || item[0] === 'dateField1' || item[0] === 'boolField1' || item[0] === 'boolField2') {
+                if(item[0] === 'integerField1' || item[0] === 'textField1' || item[0] === 'dateField1') {
                     customFieldsKeys.push(item);
                 }
             })
             const cols = [['name', 'Name'], ...customFieldsKeys].map(([key, value]) => ({
-                header: value,
+                header: value === null ? "(The field value is not set)" : value,
                 accessorKey: key,
-                filterVariant: key.includes('integer') ? 'range' : (key.includes('bool') ? 'checkbox' : 'text'),
-                Cell: ({ cell }) => key.includes('bool') ? (cell.getValue() === true ? 'Yes' : 'No') : (key.includes('date') ? cell.getValue().slice(0,10) : cell.getValue()),
+                filterVariant: key.includes('integer') ? 'range' : 'text',
+                Cell: ({ cell }) => key.includes('text') ? (cell.getValue() === null ? 'Value is not completed :(' : cell.getValue()) : (key.includes('date') ? (cell.getValue() === null || undefined ? "Value is not completed :(" : cell.getValue().slice(0,10)) : cell.getValue()),
             }));
             setColumns(cols);
         }).then(() => {
@@ -60,7 +63,7 @@ const CollectionPage = observer(() => {
                     <h2 className="collection-page-info-text">Theme: {item.theme}</h2>
                     <h2 className="collection-page-info-text">Description: {item.description}</h2>
                     <h2 className="collection-page-info-text">Number of items: {collectionItems.collectionItems.length}</h2>
-                    <Button className="btn btn-outline-dark add-collection-item-btn" onClick={() => {setModalVisible(true); setCollectionItemId(0)}}>Create new collection item</Button>
+                    <Button className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "btn btn-outline-dark add-collection-item-btn" : "none") : "none"} onClick={() => {setModalVisible(true); setCollectionItemId(0)}}>Create new collection item</Button>
                 </Col>
                 <MaterialReactTable
                     enableRowActions
@@ -68,10 +71,10 @@ const CollectionPage = observer(() => {
                     data={collectionItems.collectionItems}
                     initialState={{ showColumnFilters: true }}
                     renderRowActionMenuItems={({ row }) => [
-                        <div className="table-action-button" key="edit" onClick={() => {setModalVisible(true); setIsModify(true); setCollectionItemId(collectionItems.collectionItems[row.index].id)}}>
+                        <div className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "table-action-button" : "none") : "none"} key="edit" onClick={() => {setModalVisible(true); setIsModify(true); setCollectionItemId(collectionItems.collectionItems[row.index].id)}}>
                             Edit
                         </div>,
-                        <div className="table-action-button" key="delete" onClick={() => deleteCollectionItem(collectionItems.collectionItems[row.index].id)}>
+                        <div className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "table-action-button" : "none") : "none"} key="delete" onClick={() => deleteCollectionItem(collectionItems.collectionItems[row.index].id)}>
                             Delete
                         </div>,
                          <div className="table-action-button" key="view" onClick={() => history(COLLECTION_ITEM_ROUTE + '/' + collectionItems.collectionItems[row.index].id)}>

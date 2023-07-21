@@ -19,7 +19,7 @@ const Collection = observer(({collection}) => {
     return (
         <div className="collection-item">
             <IKContext className="file-input" publicKey={process.env.REACT_APP_PUBLIC_KEY} urlEndpoint={process.env.REACT_APP_URL_ENDPOINT} authenticationEndpoint={process.env.REACT_APP_AUTHENTIFICATION_ENDPOINT} >
-                <IKImage path={collection.images} className="collection-item-image" alt="No image"/>
+                <IKImage path={collection.images} className="collection-item-image" alt="No image" onClick={() => history(COLLECTION_ROUTE + '/' + collection.id)}/>
             </IKContext>
             <div onClick={() => history(COLLECTION_ROUTE + '/' + collection.id)} className={token.role === "ADMIN" || token.id === collection.userId ? "collection-item-shadow" : "none"}></div>
             <p className="collection-item-name">{collection.name}</p>

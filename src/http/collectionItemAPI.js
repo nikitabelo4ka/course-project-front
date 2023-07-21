@@ -15,6 +15,11 @@ export const deleteCollectionItem = async (id) => {
     return data;
 };
 
+export const fetchLatestItems = async (limit) => {
+    const {data} = await $authHost.get('api/collectionItem/latest', {params: {limit}});
+    return data;
+};
+
 export const fetchOneCollectionItem = async (id) => {
     const {data} = await $authHost.get('api/collectionItem/one/' + id);
     return data;

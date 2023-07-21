@@ -10,10 +10,6 @@
     border: none;
 }
 
-.add-collection-btn:focus {
-    outline: none;
-}
-
 .add-collection-btn:hover {
     background-color: rgb(177, 177, 177);
 }
@@ -21,7 +17,8 @@
 .collection-item-image {
     width: 13.89vw;
     height: 12vw;
-    margin-top: 0.5vw;
+    margin: 0.5vw;
+    border-radius: 8px;
 }
 
 .collection-item-name {
@@ -37,12 +34,13 @@
     border: 1px solid rgba(0, 0, 0, 0.086);
     border-radius: 8px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-left: 0;
 }
 
 .collection-item-shadow {
     position: absolute;
-    width: 14.89vw;
-    height: 14.8vw;
+    width: 15vw;
+    height: 15.3vw;
     border-radius: 8px;
     display: none;
     background-color: rgba(0, 15, 8, 0.6);
@@ -91,7 +89,6 @@
 
 .collections-wrapper {
     margin-top: 2vw;
-    justify-content: space-between;
 }
 
 .collection-modal-input, .file-input {

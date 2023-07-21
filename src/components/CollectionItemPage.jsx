@@ -3,7 +3,7 @@ import { fetchOneCollectionItem } from "../http/collectionItemAPI";
 import { fetchOneCollection } from "../http/collectionAPI";
 import { fetchAllItemTags } from "../http/tagsAPI";
 import { createLike, fetchAllUserLikes, deleteLike, fetchAllItemLikes } from "../http/likeAPI";
-import { createComment, fetchItemComments } from "../http/commentsAPI";
+import { createComment, fetchItemComments, deleteComment } from "../http/commentsAPI";
 import { useParams } from "react-router-dom";
 import {Container} from "react-bootstrap";
 import io from "socket.io-client";
@@ -67,6 +67,10 @@ const CollectionItemPage = observer(() => {
     useEffect(() => {
         socket.on("new-comment", ({ comment }) => {
             setItemComments((comments) => [...comments, comment]);
+        });
+
+        socket.on('delete-comment', ({ id }) => {
+            setItemComments((comments) => comments.filter((comment) => comment.id != id));
         });
       
         return () => {
@@ -136,7 +140,10 @@ const CollectionItemPage = observer(() => {
                                 </span>
                                 <span className="comment-text">{comment.text}</span>
                             </div>
-                            <span className="comment-time">{formatDate(comment.createdAt)}</span>
+                            <div style={{display: "flex"}}>
+                                <p className="comment-time">{formatDate(comment.createdAt)}</p>
+                                <div onClick={() => deleteComment(comment.id)} className={comment.userName === token.firstName || token.role === "ADMIN" ? "delete-comment-button" : "none"}>+</div>
+                            </div>
                         </div>
                     )}
                     <div>

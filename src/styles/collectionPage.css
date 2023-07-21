@@ -71,10 +71,6 @@
     font-size: 1.3vw;
 }
 
-.bold {
-    font-weight: 700;
-}
-
 .item-likes {
     font-size: 1vw;
     margin-left: 0.5vw;
@@ -104,6 +100,7 @@
     width: 9%;
     height: 1.95vw;
     margin-left: 2.9vw;
+    vertical-align: top;
 }
 
 .comment {
@@ -119,8 +116,16 @@
 
 .comment-text {
     margin-left: 5vw;
+    font-weight: 500;
 }
 
-.comment-text {
-    font-weight: 500;
+.none {
+    display: none;
+}
+
+.delete-comment-button {
+    transform: rotate(45deg);
+    cursor: pointer;
+    font-size: 1.7vw;
+    padding-right: 1.4vw;
 }

@@ -47,20 +47,7 @@ const NewCollectionItemModal = ({show, onHide, collectionId, isModify, collectio
         }
     });
 
-    const addCollection = () => {
-        if(isModify) {
-            modifyCollectionItem(collectionItemId, name, JSON.stringify(tags), JSON.stringify([...Object.values(customFieldsValue.integer), ...Object.values(customFieldsValue.text), ...Object.values(customFieldsValue.string), ...Object.values(customFieldsValue.date), ...Object.values(customFieldsValue.bool)])).then((data) => {
-                onHide();
-            })
-        } else {
-            createCollectionItem(name, JSON.stringify(tags), collectionId, JSON.stringify([...Object.values(customFieldsValue.integer), ...Object.values(customFieldsValue.text), ...Object.values(customFieldsValue.string), ...Object.values(customFieldsValue.date), ...Object.values(customFieldsValue.bool)])).then((data) => {
-                onHide();
-            });
-        }
-    };
-
     const closeModal = () => {
-        onHide();
         setCustomFieldsValue((state) => ({...state, integer: {...state.integer, integerField1: ''}}));
         setCustomFieldsValue((state) => ({...state, integer: {...state.integer, integerField2: ''}}));
         setCustomFieldsValue((state) => ({...state, integer: {...state.integer, integerField3: ''}}));
@@ -78,7 +65,20 @@ const NewCollectionItemModal = ({show, onHide, collectionId, isModify, collectio
         setCustomFieldsValue((state) => ({...state, bool: {...state.bool, boolField3: ''}}));
         setName('');
         setTags([]);
-    }
+        onHide();
+    };
+
+    const addCollection = () => {
+        if(isModify) {
+            modifyCollectionItem(collectionItemId, name, JSON.stringify(tags), JSON.stringify([...Object.values(customFieldsValue.integer), ...Object.values(customFieldsValue.text), ...Object.values(customFieldsValue.string), ...Object.values(customFieldsValue.date), ...Object.values(customFieldsValue.bool)])).then((data) => {
+                onHide();
+            })
+        } else {
+            createCollectionItem(name, JSON.stringify(tags), collectionId, JSON.stringify([...Object.values(customFieldsValue.integer), ...Object.values(customFieldsValue.text), ...Object.values(customFieldsValue.string), ...Object.values(customFieldsValue.date), ...Object.values(customFieldsValue.bool)])).then((data) => {
+                closeModal();
+            });
+        }
+    };
 
     useEffect(() => {
         fetchOneCollection(collectionId).then((data) => {

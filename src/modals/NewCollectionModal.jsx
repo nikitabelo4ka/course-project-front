@@ -136,7 +136,7 @@ const NewCollectionModal = ({show, onHide, userId, info, isModify}) => {
                 });
             };
         });
-    }, [collection, isModify]);
+    }, [collection, isModify, show]);
 
     const addCollection = () => {
         if(isModify) {

@@ -22,40 +22,20 @@ body {
     background: var(--navbarbackground-color);
 }
 
-.collection-item {
-    background: var(--itembackground-color);
-}
-
-.tag {
-    background: var(--itembackground-color);
-}
-
-.auth-form {
-    background: var(--itembackground-color);
-}
-
-.auth-form > h2,a {
-    color: var(--color);
+.collection-item, .tag, .auth-form, .auth-form > h2,a, .thead-dark > tr > th{
     background: var(--itembackground-color);
 }
 
 .btn-outline-success {
     border-color: var(--color);
-    color: var(--color);
 }
 
-.thead-dark > tr > th {
-    background: var(--itembackground-color);
+.thead-dark > tr > th, .theme-label, .auth-form > h2,a, .modal-dialog > div, .btn-outline-success {
     color: var(--color);
-}
-
-.theme-label {
-    color: var(--color);;
 }
 
 .modal-dialog > div {
     background: var(--background-color);
-    color: var(--color);
 }
 
 .rti--tag {
