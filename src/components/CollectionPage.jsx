@@ -71,10 +71,10 @@ const CollectionPage = observer(() => {
                     data={collectionItems.collectionItems}
                     initialState={{ showColumnFilters: true }}
                     renderRowActionMenuItems={({ row }) => [
-                        <div className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "table-action-button" : "none") : "none"} key="edit" onClick={() => {setModalVisible(true); setIsModify(true); setCollectionItemId(collectionItems.collectionItems[row.index].id)}}>
+                        <div className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "table-action-button" : "none") : "table-action-button"} key="edit" onClick={() => {setModalVisible(true); setIsModify(true); setCollectionItemId(collectionItems.collectionItems[row.index].id)}}>
                             Edit
                         </div>,
-                        <div className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "table-action-button" : "none") : "none"} key="delete" onClick={() => deleteCollectionItem(collectionItems.collectionItems[row.index].id)}>
+                        <div className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "table-action-button" : "none") : "table-action-button"} key="delete" onClick={() => deleteCollectionItem(collectionItems.collectionItems[row.index].id)}>
                             Delete
                         </div>,
                          <div className="table-action-button" key="view" onClick={() => history(COLLECTION_ITEM_ROUTE + '/' + collectionItems.collectionItems[row.index].id)}>
