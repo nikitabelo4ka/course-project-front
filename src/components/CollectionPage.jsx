@@ -55,7 +55,7 @@ const CollectionPage = observer(() => {
             <Row>
                 <Col>
                     <IKContext publicKey={process.env.REACT_APP_PUBLIC_KEY} urlEndpoint={process.env.REACT_APP_URL_ENDPOINT} authenticationEndpoint={process.env.REACT_APP_AUTHENTIFICATION_ENDPOINT} >
-                        <IKImage path={item.images ?? "/flat,1000x1000,075,f.jpg"} className="collection-page-image" alt="No image"/>
+                        <IKImage path={item.images === "" ? "no_image.jpg" : item.images} className="collection-page-image" alt="No image"/>
                     </IKContext>
                 </Col>
                 <Col className="collection-page-info-wrapper">

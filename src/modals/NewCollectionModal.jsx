@@ -17,7 +17,7 @@ const NewCollectionModal = ({show, onHide, userId, info, isModify}) => {
     const [theme, setTheme] = useState('');
     const [otherTheme, setOtherTheme] = useState('');
     const [description, setDescription] = useState('');
-    const [images, setImages] = useState('');
+    const [images, setImages] = useState('no_image.jpg');
 
     const [isCheckboxActive, setIsCheckboxActive] = useState({
         integer: false,
@@ -188,7 +188,7 @@ const NewCollectionModal = ({show, onHide, userId, info, isModify}) => {
                             <option key={theme}>{theme}</option>
                         )}
                     </select>
-                    <Form.Control className={theme === 'Other' ? "collection-modal-input" : "none"} value={otherTheme} onChange={(e) => setOtherTheme(e.target.value)} placeholder={"Other theme..."}/>
+                    <Form.Control className={theme === 'Other' ? "collection-modal-input" : "none"} value={otherTheme} onChange={(e) => setOtherTheme(e.target.value)} placeholder={"Other theme..."} required/>
                     <Form.Label>Collection description</Form.Label>
                     <Form.Control className="collection-modal-input" value={description} onChange={e => setDescription(e.target.value)} placeholder={"Description..."} as="textarea"/>
                     <Form.Label>Collection image</Form.Label>

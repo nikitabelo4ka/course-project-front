@@ -115,6 +115,7 @@ const CollectionItemPage = observer(() => {
                     )}
                 </div>
                 <div className="description">
+                    <p className="collection-page-info-item bold">{collectionItemInfo.name}</p>
                     <p className="collection-page-info-item bold">{collectionInfo.name}</p>
                     <p className="collection-page-info-item bold">Theme: {collectionInfo.theme}</p>
                     <p className="collection-page-info-item bold">{collectionInfo.description}</p>
