@@ -67,7 +67,7 @@ const CollectionPage = observer(() => {
 
     return (
         <Container>
-            <div className="d-flex justify-content-between" style={{marginBottom: "2vw"}}>
+            <div className="d-flex justify-content-center" style={{marginBottom: "2vw"}}>
                 <IKContext publicKey={process.env.REACT_APP_PUBLIC_KEY} urlEndpoint={process.env.REACT_APP_URL_ENDPOINT} authenticationEndpoint={process.env.REACT_APP_AUTHENTIFICATION_ENDPOINT} >
                         <IKImage path={item.images === "" ? "no_image.jpg" : item.images} className="collection-page-image" alt="No image"/>
                 </IKContext>
@@ -76,7 +76,7 @@ const CollectionPage = observer(() => {
                     <h2 className="collection-page-info-text">Theme: {item.theme}</h2>
                     <h2 className="collection-page-info-text">Description: {item.description}</h2>
                     <h2 className="collection-page-info-text">Number of items: {collectionItems.collectionItems.length}</h2>
-                    <Button className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "btn btn-outline-dark add-collection-item-btn" : "none") : "btn btn-outline-dark add-collection-item-btn"} onClick={() => {setModalVisible(true); setCollectionItemId(0)}}>Create new collection item</Button>
+                    <Button className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "btn btn-outline-dark add-collection-item-btn" : "d-none") : "btn btn-outline-dark add-collection-item-btn"} onClick={() => {setModalVisible(true); setCollectionItemId(0)}}>Create new collection item</Button>
                 </div>
             </div>
                 {columns[0] && (
@@ -109,10 +109,10 @@ const CollectionPage = observer(() => {
                             }}
                             initialState={{ showColumnFilters: true }}
                             renderRowActionMenuItems={({ row }) => [
-                                <div className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "table-action-button" : "none") : "table-action-button"} key="edit" onClick={() => {setModalVisible(true); setIsModify(true); setCollectionItemId(collectionItems.collectionItems[row.index].id)}}>
+                                <div className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "table-action-button" : "d-none") : "table-action-button"} key="edit" onClick={() => {setModalVisible(true); setIsModify(true); setCollectionItemId(collectionItems.collectionItems[row.index].id)}}>
                                     Edit
                                 </div>,
-                                <div className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "table-action-button" : "none") : "table-action-button"} key="delete" onClick={() => deleteCollectionItem(collectionItems.collectionItems[row.index].id)}>
+                                <div className={token === null || token.id !== item.userId ? (token.role === "ADMIN" ? "table-action-button" : "d-none") : "table-action-button"} key="delete" onClick={() => deleteCollectionItem(collectionItems.collectionItems[row.index].id)}>
                                     Delete
                                 </div>,
                                 <div className="table-action-button" key="view" onClick={() => history(COLLECTION_ITEM_ROUTE + '/' + collectionItems.collectionItems[row.index].id)}>

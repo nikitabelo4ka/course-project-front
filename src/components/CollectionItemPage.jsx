@@ -5,6 +5,7 @@ import { fetchAllItemTags } from "../http/tagsAPI";
 import { createLike, fetchAllUserLikes, deleteLike, fetchAllItemLikes } from "../http/likeAPI";
 import { createComment, fetchItemComments, deleteComment } from "../http/commentsAPI";
 import { useParams } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 import {Container} from "react-bootstrap";
 import io from "socket.io-client";
 import {observer} from 'mobx-react';
@@ -125,7 +126,7 @@ const CollectionItemPage = observer(() => {
                 <div>
                     <div className="d-flex">
                         {tags.map((tag) =>
-                            <p key={tag.id} style={{fontSize: "1vw"}}>#{tag[0].text}</p>
+                            <p key={tag.id} className="collection-item-tag">#{tag[0].text}</p>
                         )}
                     </div>
                     <div className="d-flex align-items-center justify-content-center">
@@ -147,13 +148,13 @@ const CollectionItemPage = observer(() => {
                             </div>
                             <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
                                 <p className="comment-time">{formatDate(comment.createdAt)}</p>
-                                <div onClick={() => deleteComment(comment.id)} className={comment.userName === token.firstName || token.role === "ADMIN" ? "delete-comment-button" : "none"}>+</div>
+                                <div onClick={() => deleteComment(comment.id)} className={comment.userName === token.firstName || token.role === "ADMIN" ? "delete-comment-button" : "d-none"}>+</div>
                             </div>
                         </div>
                     )}
                     <div className="comment-send-wrapper">
                         <input type="text" className="comment-input" value={commentValue} onChange={(e) => setCommentValue(e.target.value)} placeholder="Comment..."/>
-                        <button type="button" className="btn btn-outline-success comment-send-button" onClick={sendComment}>Send</button>
+                        <Button variant="success" className="comment-send-button" onClick={sendComment}>Send</Button>
                     </div>
                 </div>
             </div>

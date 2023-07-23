@@ -41,7 +41,7 @@ const NavBar = observer(() => {
         <Navbar className="navbar">
             <Container>
                 <div style={{flexWrap: "nowrap", display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%"}}>
-                    <NavLink style={{color:'white', fontSize: "1.5vw", textDecoration: "none"}} to={MAIN_ROUTE}>Main</NavLink>
+                    <NavLink style={{color:'white'}} to={MAIN_ROUTE}>Main</NavLink>
                     <ThemeContext.Consumer>
                         {({ theme, setTheme }) => (
                         <ThemeSelector
@@ -67,7 +67,7 @@ const NavBar = observer(() => {
                         </Nav>
                         :
                         <Nav>
-                            <Button style={{fontSize: "1vw", color: 'white'}} variant={"outline-dark"} onClick={() => history(LOGIN_ROUTE)}>Authorization</Button>
+                            <Button className='navbar-btn' variant={"outline-dark"} onClick={() => history(LOGIN_ROUTE)}>Authorization</Button>
                         </Nav>
                     }
                 </div>

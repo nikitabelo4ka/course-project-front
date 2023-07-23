@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {Context} from "../index";
 import {observer} from 'mobx-react';
 import {Container} from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
 import Collection from "./Collection";
 import {COLLECTION_ITEM_ROUTE} from "../utils/consts";
 import "../styles/main.css";
@@ -52,34 +53,34 @@ const Main = observer(() => {
 
     return (
         <Container>
-                <h1 style={{textAlign: "center", marginTop: "2vw", fontSize: "2vw"}}>#Tags</h1>
+                <h1>#Tags</h1>
                 {tag.tags.map((item) =>
                     <p key={item.id} className="tag">{item.text}</p>
                 )}
-                <h1 style={{textAlign: "center", marginTop: "2vw", fontSize: "2vw"}}>All collections</h1>
-                <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
+                <h1>All collections</h1>
+                <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
                     {collections.map((item) => 
                         <Collection collection={item} key={item.id}/>
                     )}
                 </div>
                 <div style={{marginBottom: "5vw"}}>
                     <div>
-                        <h1 style={{textAlign: "center", marginTop: "2vw", fontSize: "2vw"}}>Latest items</h1>
+                        <h1>Latest items</h1>
                         <div className="d-flex align-items-center">
                             <input className="limit-input" value={limit} onChange={(e) => setLimit(e.target.value)} type="number"/>
-                            <button type="button" className="btn btn-warning get-latest-items-btn" onClick={getLatestItems}>Get</button>
+                            <Button variant="warning" className="get-latest-items-btn" onClick={getLatestItems}>Get</Button>
                         </div>
                     </div>
-                    {latestItems === [] ? <h3 style={{textAlign: "center", marginTop: "2vw"}}>Enter the desired number of items and click get</h3> :
-                        <table className="table table-striped" style={{border: "1px solid black", margin: "1vw auto 0"}}>
-                            <thead className="thead-dark" style={{fontSize: "1vw"}}>
+                    {latestItems === [] ? <h1>Enter the desired number of items and click get</h1> :
+                        <table className="table table-striped main-table">
+                            <thead className="thead-dark main-table-head">
                                 <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Collection</th>
                                     <th scope="col">Author</th>
                                 </tr>
                             </thead>
-                            <tbody style={{fontSize: "1vw"}}>
+                            <tbody className="thead-dark main-table-body">
                                 {latestItems.map((item) => 
                                     <tr key={item.id} onClick={() => history(COLLECTION_ITEM_ROUTE + '/' + item.id)} style={{cursor: "pointer"}}>
                                         <th scope="row">{item.name}</th>
@@ -91,8 +92,8 @@ const Main = observer(() => {
                         </table>
                     }
                 </div>
-                <h1 style={{textAlign: "center", marginTop: "2vw", fontSize: "2vw"}}>Five biggest collections</h1>
-                <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
+                <h1>Five biggest collections</h1>
+                <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
                     {resultCollections.map((item) => 
                         <Collection collection={item} key={item.id}/>
                     )}

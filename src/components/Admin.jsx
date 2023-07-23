@@ -4,6 +4,8 @@ import {Context} from "../index";
 import {useNavigate} from "react-router-dom";
 import {observer} from 'mobx-react';
 import {USER_COLLECTIONS_ROUTE} from "../utils/consts";
+import Dropdown from 'react-bootstrap/Dropdown';
+import Button from 'react-bootstrap/Button';
 import jwtDecode from 'jwt-decode';
 import '../styles/admin.css';
 
@@ -63,32 +65,46 @@ const Admin = observer(() => {
     };
 
     return (
-        <table className="table table-striped" style={{width: "70vw", border: "1px solid black", margin: "100px auto 0", fontSize: "1vw"}}>
+        <table className="table table-striped admin-table">
             <thead className="thead-dark">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Firstname</th>
-                    <th scope="col">Email</th>
-                    <th scope="col" style={{width: "8vw"}}>Status</th>
-                    <th scope="col" style={{width: "8vw"}}>Role</th>
-                    <th scope="col" style={{width: "8vw"}}></th>
-                    <th scope="col" style={{width: "8vw"}}></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th>ID</th>
+                    <th>Firstname</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Role</th>
+                    <th className="d-md-none">Actions</th>
+                    <th className="d-none d-md-table-cell"></th>
+                    <th className="d-none d-md-table-cell"></th>
+                    <th className="d-none d-md-table-cell"></th>
+                    <th className="d-none d-md-table-cell"></th>
                 </tr>
             </thead>
             <tbody>
                 {user.users.map((item) => 
                     <tr key={item.id}>
-                        <th scope="row">{item.id}</th>
+                        <td>{item.id}</td>
                         <td>{item.firstName}</td>
                         <td>{item.email}</td>
                         <td>{item.status}</td>
                         <td>{item.role}</td>
-                        <td><button onClick={() => ChangeStatus(item.id, item.status)}>{item.status === "ACTIVE" ? "Block user" : "Unblock user"}</button></td>
-                        <td><button onClick={() => ChangeAdmin(item.id, item.role)} style={{marginLeft: "0.5vw", width: "6vw"}}>{item.role === "ADMIN" ? "Delete ADMIN" : "Set ADMIN"}</button></td>
-                        <td><button onClick={() => Delete(item.id)}>Delete user</button></td>
-                        <td><button onClick={() => history(USER_COLLECTIONS_ROUTE + '/' + item.id)}>Collections</button></td>
+                        <td className="d-md-none">
+                            <Dropdown>
+                                <Dropdown.Toggle variant="success" id="dropdown-basic" className="admin-btn">
+                                    Select action
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item className="admin-btn" onClick={() => ChangeStatus(item.id, item.status)}>{item.status === "ACTIVE" ? "Block user" : "Unblock user"}</Dropdown.Item>
+                                    <Dropdown.Item className="admin-btn" onClick={() => ChangeAdmin(item.id, item.role)}>{item.role === "ADMIN" ? "Delete ADMIN" : "Set ADMIN"}</Dropdown.Item>
+                                    <Dropdown.Item className="admin-btn" onClick={() => Delete(item.id)}>Delete user</Dropdown.Item>
+                                    <Dropdown.Item className="admin-btn" onClick={() => history(USER_COLLECTIONS_ROUTE + '/' + item.id)}>Collections</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </td>
+                        <td className="d-none d-md-table-cell"><Button variant={item.status === "ACTIVE" ? "danger" : "success"} onClick={() => ChangeStatus(item.id, item.status)} className="admin-btn">{item.status === "ACTIVE" ? "Block user" : "Unblock user"}</Button></td>
+                        <td className="d-none d-md-table-cell"><Button variant={item.role === "ADMIN" ? "danger" : "success"} onClick={() => ChangeAdmin(item.id, item.role)} className="admin-btn">{item.role === "ADMIN" ? "Delete ADMIN" : "Set ADMIN"}</Button></td>
+                        <td className="d-none d-md-table-cell"><Button variant="danger" onClick={() => Delete(item.id)} className="admin-btn">Delete user</Button></td>
+                        <td className="d-none d-md-table-cell"><Button variant="info" onClick={() => history(USER_COLLECTIONS_ROUTE + '/' + item.id)} className="admin-btn">Collections</Button></td>
                     </tr>
                 )}
             </tbody>

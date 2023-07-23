@@ -21,9 +21,9 @@ const Collection = observer(({collection}) => {
             <IKContext className="file-input" publicKey={process.env.REACT_APP_PUBLIC_KEY} urlEndpoint={process.env.REACT_APP_URL_ENDPOINT} authenticationEndpoint={process.env.REACT_APP_AUTHENTIFICATION_ENDPOINT} >
                 <IKImage path={collection.images === "" ? "no_image.jpg" : collection.images} className="collection-item-image" alt="No image" onClick={() => history(COLLECTION_ROUTE + '/' + collection.id)}/>
             </IKContext>
-            <div onClick={() => history(COLLECTION_ROUTE + '/' + collection.id)} className={token.role === "ADMIN" || token.id === collection.userId ? "collection-item-shadow" : "none"}></div>
+            <div onClick={() => history(COLLECTION_ROUTE + '/' + collection.id)} className={token.role === "ADMIN" || token.id === collection.userId ? "collection-item-shadow" : "d-none"}></div>
             <p className="collection-item-name">{collection.name}</p>
-            <div className={token.role === "ADMIN" || token.id === collection.userId ? "collection-item-shadow-buttons" : "none"}>
+            <div className={token.role === "ADMIN" || token.id === collection.userId ? "collection-item-shadow-buttons" : "d-none"}>
                 <button className="collection-item-shadow-button" onClick={() => {setModalVisible(true); setIsModify(true)}}>Modify</button>
                 <button className="collection-item-shadow-button" onClick={() => deleteCollection(collection.id)}>Delete</button>
             </div>

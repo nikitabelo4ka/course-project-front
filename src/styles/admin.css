@@ -1,3 +1,34 @@
 button:focus {
     outline: none;
 }
+
+.admin-table {
+    width: 70vw;
+    border: 1px solid black;
+    margin: 100px auto 0;
+    font-size: 1vw;
+}
+
+.admin-btn {
+    font-size: 1vw;
+}
+
+@media screen and (max-width: 800px) {
+
+    .admin-table {
+        width: 90vw;
+        font-size: 1.5vw;
+    }
+    
+    .admin-btn {
+        font-size: 1.5vw;
+    }
+}
+
+@media screen and (max-width: 540px) {
+
+    .admin-table, .admin-btn {
+        font-size: 2vw;
+    }
+
+}
