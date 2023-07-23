@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import {NavLink} from "react-router-dom";
 import {LOGIN_ROUTE, MAIN_ROUTE, ADMIN_ROUTE, PROFILE_ROUTE} from "../utils/consts";
 import {useNavigate} from "react-router-dom";
-import {Button} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
 import ThemeSelector from './ThemeSelector';
 import { ThemeContext, themes } from '../themes/ThemeContext';
@@ -39,37 +39,39 @@ const NavBar = observer(() => {
 
     return (
         <Navbar className="navbar">
-            <div style={{flexWrap: "nowrap", display: "flex"}}>
-                <NavLink style={{color:'white', fontSize: "30px", marginLeft: "12.5vw", marginTop: "0px", textDecoration: "none"}} to={MAIN_ROUTE}>Main</NavLink>
-                <ThemeContext.Consumer>
-                    {({ theme, setTheme }) => (
-                    <ThemeSelector
-                        onChange={() => {
-                        if (theme === themes.light) setTheme(themes.dark)
-                        if (theme === themes.dark) setTheme(themes.light)
-                        }}
-                        value={theme === themes.dark}
-                    />
-                    )}
-                </ThemeContext.Consumer>
-                {user.isAuth ?
-                    <Nav style={{color: 'black', fontSize: "20px", marginLeft: "51vw"}}>
-                        <Button style={{fontSize: "20px", color: 'white'}} variant={"outline-dark"} onClick={() => logOut()} className="ml-2">
-                            Log out
-                        </Button>
-                        <Button className={isUser === true ? "d-none" : "admin"} style={{fontSize: "20px", color: 'white', marginLeft: "1vw"}} variant={"outline-dark"} onClick={() => history(ADMIN_ROUTE)}>
-                            Admin
-                        </Button>
-                        <Button className="ml-2" style={{fontSize: "20px", color: 'white', marginLeft: "1vw"}} variant={"outline-dark"} onClick={() => history(PROFILE_ROUTE)}>
-                            Profile
-                        </Button>
-                    </Nav>
-                    :
-                    <Nav style={{color: 'white'}}>
-                        <Button style={{fontSize: "20px", color: 'white', marginLeft: "55vw"}} variant={"outline-dark"} onClick={() => history(LOGIN_ROUTE)}>Authorization</Button>
-                    </Nav>
-                }
-            </div>
+            <Container>
+                <div style={{flexWrap: "nowrap", display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%"}}>
+                    <NavLink style={{color:'white', fontSize: "1.5vw", textDecoration: "none"}} to={MAIN_ROUTE}>Main</NavLink>
+                    <ThemeContext.Consumer>
+                        {({ theme, setTheme }) => (
+                        <ThemeSelector
+                            onChange={() => {
+                            if (theme === themes.light) setTheme(themes.dark)
+                            if (theme === themes.dark) setTheme(themes.light)
+                            }}
+                            value={theme === themes.dark}
+                        />
+                        )}
+                    </ThemeContext.Consumer>
+                    {user.isAuth ?
+                        <Nav>
+                            <Button className='navbar-btn' variant={"outline-dark"} onClick={() => logOut()}>
+                                Log out
+                            </Button>
+                            <Button className={isUser === true ? "d-none" : "navbar-btn"} variant={"outline-dark"} onClick={() => history(ADMIN_ROUTE)}>
+                                Admin
+                            </Button>
+                            <Button className='navbar-btn' variant={"outline-dark"} onClick={() => history(PROFILE_ROUTE)}>
+                                Profile
+                            </Button>
+                        </Nav>
+                        :
+                        <Nav>
+                            <Button style={{fontSize: "1vw", color: 'white'}} variant={"outline-dark"} onClick={() => history(LOGIN_ROUTE)}>Authorization</Button>
+                        </Nav>
+                    }
+                </div>
+            </Container>
         </Navbar>
     );
 });

@@ -26,4 +26,8 @@
     margin: 0 0 0 1vw;
     vertical-align:top;
     height: 2.1vw;
+    font-size: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

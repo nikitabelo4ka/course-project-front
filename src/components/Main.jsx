@@ -50,36 +50,36 @@ const Main = observer(() => {
 
     }, [tag]);
 
-    console.log(resultCollections)
-
     return (
         <Container>
-                <h1 style={{textAlign: "center", marginTop: "2vw"}}>#Tags</h1>
+                <h1 style={{textAlign: "center", marginTop: "2vw", fontSize: "2vw"}}>#Tags</h1>
                 {tag.tags.map((item) =>
                     <p key={item.id} className="tag">{item.text}</p>
                 )}
-                <h1 style={{textAlign: "center", marginTop: "2vw"}}>All collections</h1>
-                <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
+                <h1 style={{textAlign: "center", marginTop: "2vw", fontSize: "2vw"}}>All collections</h1>
+                <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
                     {collections.map((item) => 
                         <Collection collection={item} key={item.id}/>
                     )}
                 </div>
                 <div style={{marginBottom: "5vw"}}>
                     <div>
-                        <h1 style={{textAlign: "center", marginTop: "2vw"}}>Latest items</h1>
-                        <input className="limit-input" value={limit} onChange={(e) => setLimit(e.target.value)} type="number"/>
-                        <button type="button" className="btn btn-warning get-latest-items-btn" onClick={getLatestItems}>Get</button>
+                        <h1 style={{textAlign: "center", marginTop: "2vw", fontSize: "2vw"}}>Latest items</h1>
+                        <div className="d-flex align-items-center">
+                            <input className="limit-input" value={limit} onChange={(e) => setLimit(e.target.value)} type="number"/>
+                            <button type="button" className="btn btn-warning get-latest-items-btn" onClick={getLatestItems}>Get</button>
+                        </div>
                     </div>
                     {latestItems === [] ? <h3 style={{textAlign: "center", marginTop: "2vw"}}>Enter the desired number of items and click get</h3> :
-                        <table className="table table-striped" style={{border: "1px solid black", margin: "100px auto 0"}}>
-                            <thead className="thead-dark">
+                        <table className="table table-striped" style={{border: "1px solid black", margin: "1vw auto 0"}}>
+                            <thead className="thead-dark" style={{fontSize: "1vw"}}>
                                 <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Collection</th>
                                     <th scope="col">Author</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style={{fontSize: "1vw"}}>
                                 {latestItems.map((item) => 
                                     <tr key={item.id} onClick={() => history(COLLECTION_ITEM_ROUTE + '/' + item.id)} style={{cursor: "pointer"}}>
                                         <th scope="row">{item.name}</th>
@@ -91,8 +91,8 @@ const Main = observer(() => {
                         </table>
                     }
                 </div>
-                <h1 style={{textAlign: "center", marginTop: "2vw"}}>Five biggest collections</h1>
-                <div style={{display: "flex", flexWrap: "wrap"}}>
+                <h1 style={{textAlign: "center", marginTop: "2vw", fontSize: "2vw"}}>Five biggest collections</h1>
+                <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
                     {resultCollections.map((item) => 
                         <Collection collection={item} key={item.id}/>
                     )}

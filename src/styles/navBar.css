@@ -2,3 +2,13 @@
     width: 15vw;
     margin-left: 27vw;
 }
+
+.navbar-btn {
+    font-size: 1vw;
+    color: white;
+    margin-left: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+}

@@ -63,7 +63,7 @@ const Admin = observer(() => {
     };
 
     return (
-        <table className="table table-striped" style={{width: "70vw", border: "1px solid black", margin: "100px auto 0"}}>
+        <table className="table table-striped" style={{width: "70vw", border: "1px solid black", margin: "100px auto 0", fontSize: "1vw"}}>
             <thead className="thead-dark">
                 <tr>
                     <th scope="col">ID</th>
