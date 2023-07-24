@@ -9,6 +9,12 @@ button:focus {
     font-size: 1vw;
 }
 
+.add-user-collection-btn {
+    width: 20vw;
+    font-size: 1vw;
+    margin: 40px auto 0;
+}
+
 .admin-btn {
     font-size: 1vw;
 }
@@ -17,17 +23,16 @@ button:focus {
 
     .admin-table {
         width: 90vw;
-        font-size: 1.5vw;
     }
     
-    .admin-btn {
+    .admin-btn, .add-user-collection-btn, .admin-table {
         font-size: 1.5vw;
     }
 }
 
 @media screen and (max-width: 540px) {
 
-    .admin-table, .admin-btn {
+    .admin-table, .admin-btn, .add-user-collection-btn {
         font-size: 2vw;
     }
 

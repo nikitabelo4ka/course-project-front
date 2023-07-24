@@ -1,23 +1,22 @@
 import {React, useContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import { fetchTags } from "../http/tagsAPI";
-import { fetchAllItems, fetchLatestItems } from "../http/collectionItemAPI";
-import { fetchOneCollection, fetchCollections } from "../http/collectionAPI";
-import Collection from "./Collection";
-import {COLLECTION_ITEM_ROUTE} from "../utils/consts";
-import {Context} from "../index";
+import { fetchAllItems, fetchLatestItems } from "../../http/collectionItemAPI";
+import { fetchOneCollection, fetchCollections } from "../../http/collectionAPI";
+import Collection from "../Collection";
+import {COLLECTION_ITEM_ROUTE} from "../../utils/consts";
+import {Context} from "../../index";
 import {observer} from 'mobx-react';
 import {Container} from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
-import "../styles/main.css";
+import TagsCloud from "../TagsCloud";
+import "./main.css";
 
 const Main = observer(() => {
 
-    const {tag} = useContext(Context);
+    const {collection} = useContext(Context);
     const history = useNavigate();
 
     const [resultCollections, setResultCollections] = useState([]);
-    const [collections, setCollections] = useState([]);
     const [limit, setLimit] = useState(0);
     const [latestItems, setLatestItems] = useState([]);
 
@@ -31,14 +30,13 @@ const Main = observer(() => {
     const getLatestItems = () => {
         fetchLatestItems(limit).then((data) => {
             setLatestItems(data);
-        })
+        });
     };
 
     useEffect(() => {
-        fetchTags().then((data) => tag.setTags(data));
         fetchAllItems().then((data) => {
             Object.entries(groupBy(data, "collectionId")).sort(function(a,b) {return b[1].length - a[1].length}).forEach((item, index) => {
-                if (index < 5) {
+                if (item[0] && index < 5) {
                     fetchOneCollection(item[0]).then((data) => {
                         setResultCollections((state) => ([...state, data]));
                     });
@@ -46,21 +44,17 @@ const Main = observer(() => {
             })
         });
         fetchCollections().then((data) => {
-            setCollections(data);
+            collection.setCollections(data);
         });
-
-    }, [tag]);
+    }, [collection]);
 
     return (
         <Container>
-                <h1>#Tags</h1>
-                {tag.tags.map((item) =>
-                    <p key={item.id} className="tag">{item.text}</p>
-                )}
+                <TagsCloud />
                 <h1>All collections</h1>
                 <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
-                    {collections.map((item) => 
-                        <Collection collection={item} key={item.id}/>
+                    {collection.collections.map((item) => 
+                        <Collection item={item} key={item.id}/>
                     )}
                 </div>
                 <div style={{marginBottom: "5vw"}}>
@@ -95,7 +89,7 @@ const Main = observer(() => {
                 <h1>Five biggest collections</h1>
                 <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
                     {resultCollections.map((item) => 
-                        <Collection collection={item} key={item.id}/>
+                        <Collection item={item} key={item.id}/>
                     )}
                 </div>
         </Container>

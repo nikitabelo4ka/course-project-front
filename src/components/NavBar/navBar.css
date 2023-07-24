@@ -3,7 +3,7 @@
     margin-left: 27vw;
 }
 
-a {
+.main-link {
     font-size: 1.5vw;
     text-decoration: none;
 }
@@ -39,7 +39,7 @@ a {
 
 @media screen and (max-width: 855px) {
     
-    a {
+    .main-link {
         font-size: 2.2vw;
     }
 
@@ -51,7 +51,7 @@ a {
 
 @media screen and (max-width: 600px) {
     
-    a {
+    .main-link {
         font-size: 2.7vw;
     }
 
@@ -62,7 +62,7 @@ a {
 
 @media screen and (max-width: 480px) {
     
-    a {
+    .main-link {
         font-size: 3.7vw;
     }
 

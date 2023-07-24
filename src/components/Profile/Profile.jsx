@@ -1,13 +1,13 @@
 import {React, useContext, useEffect, useState} from "react";
-import {fetchAllUserCollections} from "../http/collectionAPI";
-import {Context} from "../index";
+import {fetchAllUserCollections} from "../../http/collectionAPI";
+import {Context} from "../../index";
 import {observer} from 'mobx-react';
-import Collection from "./Collection";
-import NewCollectionModal from "../modals/NewCollectionModal";
+import Collection from "../Collection";
+import NewCollectionModal from "../../modals/NewCollectionModal";
 import Button from "react-bootstrap/Button";
 import {Container, Row} from "react-bootstrap";
 import jwtDecode from 'jwt-decode';
-import '../styles/profile.css';
+import './profile.css';
 
 const Profile = observer(() => {
 
@@ -27,7 +27,7 @@ const Profile = observer(() => {
             <Button className="btn btn-outline-dark add-collection-btn" onClick={() => setModalVisible(true)}>Create new collection</Button>
             <Row className="collections-wrapper">
                 {collection.userCollections.map((collection) => 
-                    <Collection key={collection.id} collection={collection}/>
+                    <Collection key={collection.id} item={collection}/>
                 )}
             </Row>
             <NewCollectionModal show={modalVisisble} onHide={() => setModalVisible(false)}/>

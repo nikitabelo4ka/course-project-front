@@ -1,19 +1,20 @@
 import {React, useState, useEffect, useContext, useMemo} from "react";
 import {useParams, useNavigate} from 'react-router-dom';
-import {fetchOneCollection} from "../http/collectionAPI";
+import {fetchOneCollection} from "../../http/collectionAPI";
 import { createTheme, ThemeProvider } from '@mui/material';
-import {fetchAllCollectionItems, deleteCollectionItem} from "../http/collectionItemAPI";
-import { ThemeContext } from "../themes/ThemeContext";
+import {fetchAllCollectionItems, deleteCollectionItem} from "../../http/collectionItemAPI";
+import { ThemeContext } from "../../themes/ThemeContext";
 import { IKImage, IKContext } from 'imagekitio-react';
-import {COLLECTION_ITEM_ROUTE} from "../utils/consts";
-import NewCollectionItemModal from "../modals/NewCollectionItemModal";
+import ReactMarkdown from 'react-markdown';
+import {COLLECTION_ITEM_ROUTE} from "../../utils/consts";
+import NewCollectionItemModal from "../../modals/NewCollectionItemModal";
 import { MaterialReactTable } from 'material-react-table';
 import {observer} from 'mobx-react';
-import {Context} from "../index";
+import {Context} from "../../index";
 import Button from "react-bootstrap/Button";
 import {Container} from "react-bootstrap";
 import jwtDecode from 'jwt-decode';
-import "../styles/collectionPage.css";
+import "./collectionPage.css";
 
 const CollectionPage = observer(() => {
 
@@ -75,7 +76,7 @@ const CollectionPage = observer(() => {
                 <div className="collection-page-info-wrapper">
                     <h1 className="collection-page-info-text bold">{item.name}</h1>
                     <h2 className="collection-page-info-text">Theme: {item.theme}</h2>
-                    <h2 className="collection-page-info-text">Description: {item.description}</h2>
+                    <h2 className="collection-page-info-text">Description: <ReactMarkdown>{item.description}</ReactMarkdown></h2>
                     <h2 className="collection-page-info-text">Number of items: {collectionItems.collectionItems.length}</h2>
                     <Button className={token === null || token.id !== item.userId ? (token && token.role === "ADMIN" ? "btn btn-outline-dark add-collection-item-btn" : "d-none") : "btn btn-outline-dark add-collection-item-btn"} onClick={() => {setModalVisible(true); setCollectionItemId(0)}}>Create new collection item</Button>
                 </div>
