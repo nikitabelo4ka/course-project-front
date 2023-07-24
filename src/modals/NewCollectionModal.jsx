@@ -305,7 +305,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.integer.first}
-                  required={isCheckboxChecked.integer.first ? 'required' : 'no'}
                   disabled={isCheckboxChecked.integer.first ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({
@@ -327,7 +326,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.integer.second}
-                  required={isCheckboxChecked.integer.second ? 'required' : 'no'}
                   disabled={isCheckboxChecked.integer.second ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({
@@ -349,7 +347,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.integer.third}
-                  required={isCheckboxChecked.integer.third ? 'required' : 'no'}
                   disabled={isCheckboxChecked.integer.third ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({
@@ -383,7 +380,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.text.first}
-                  required={isCheckboxChecked.text.first ? 'required' : 'no'}
                   disabled={isCheckboxChecked.text.first ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({ ...state, text: { ...state.text, first: e.target.value } }))
@@ -402,7 +398,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.text.second}
-                  required={isCheckboxChecked.text.second ? 'required' : 'no'}
                   disabled={isCheckboxChecked.text.second ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({ ...state, text: { ...state.text, second: e.target.value } }))
@@ -421,7 +416,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.text.third}
-                  required={isCheckboxChecked.text.third ? 'required' : 'no'}
                   disabled={isCheckboxChecked.text.third ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({ ...state, text: { ...state.text, third: e.target.value } }))
@@ -452,7 +446,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.string.first}
-                  required={isCheckboxChecked.string.first ? 'required' : 'no'}
                   disabled={isCheckboxChecked.string.first ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({ ...state, string: { ...state.string, first: e.target.value } }))
@@ -471,7 +464,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.string.second}
-                  required={isCheckboxChecked.string.second ? 'required' : 'no'}
                   disabled={isCheckboxChecked.string.second ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({ ...state, string: { ...state.string, second: e.target.value } }))
@@ -490,7 +482,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.string.third}
-                  required={isCheckboxChecked.string.third ? 'required' : 'no'}
                   disabled={isCheckboxChecked.string.third ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({ ...state, string: { ...state.string, third: e.target.value } }))
@@ -521,7 +512,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.date.first}
-                  required={isCheckboxChecked.date.first ? 'required' : 'no'}
                   disabled={isCheckboxChecked.date.first ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({ ...state, date: { ...state.date, first: e.target.value } }))
@@ -540,7 +530,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.date.second}
-                  required={isCheckboxChecked.date.second ? 'required' : 'no'}
                   disabled={isCheckboxChecked.date.second ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({ ...state, date: { ...state.date, second: e.target.value } }))
@@ -559,7 +548,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.date.third}
-                  required={isCheckboxChecked.date.third ? 'required' : 'no'}
                   disabled={isCheckboxChecked.date.third ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({ ...state, date: { ...state.date, third: e.target.value } }))
@@ -590,7 +578,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.bool.first}
-                  required={isCheckboxChecked.bool.first ? 'required' : 'no'}
                   disabled={isCheckboxChecked.bool.first ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({ ...state, bool: { ...state.bool, first: e.target.value } }))
@@ -609,7 +596,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.bool.second}
-                  required={isCheckboxChecked.bool.second ? 'required' : 'no'}
                   disabled={isCheckboxChecked.bool.second ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({ ...state, bool: { ...state.bool, second: e.target.value } }))
@@ -628,7 +614,6 @@ const NewCollectionModal = ({ show, onHide, userId, info, isModify }) => {
                 />
                 <Form.Control
                   value={customFieldsValue.bool.third}
-                  required={isCheckboxChecked.bool.third ? 'required' : 'no'}
                   disabled={isCheckboxChecked.bool.third ? '' : 'disabled'}
                   onChange={(e) =>
                     setCustomFieldsValue((state) => ({ ...state, bool: { ...state.bool, third: e.target.value } }))
