@@ -1,14 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
+import {useNavigate, NavLink} from "react-router-dom";
 import {Context} from "../index";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import {NavLink} from "react-router-dom";
-import {LOGIN_ROUTE, MAIN_ROUTE, ADMIN_ROUTE, PROFILE_ROUTE} from "../utils/consts";
-import {useNavigate} from "react-router-dom";
-import {Button, Container} from "react-bootstrap";
 import {observer} from "mobx-react-lite";
+import {LOGIN_ROUTE, MAIN_ROUTE, ADMIN_ROUTE, PROFILE_ROUTE} from "../utils/consts";
 import ThemeSelector from './ThemeSelector';
 import { ThemeContext, themes } from '../themes/ThemeContext';
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import {Button, Container} from "react-bootstrap";
 import jwtDecode from 'jwt-decode';
 import "../styles/navBar.css";
 

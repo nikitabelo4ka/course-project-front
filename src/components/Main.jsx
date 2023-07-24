@@ -1,14 +1,14 @@
 import {React, useContext, useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import { fetchTags } from "../http/tagsAPI";
 import { fetchAllItems, fetchLatestItems } from "../http/collectionItemAPI";
 import { fetchOneCollection, fetchCollections } from "../http/collectionAPI";
-import {useNavigate} from "react-router-dom";
+import Collection from "./Collection";
+import {COLLECTION_ITEM_ROUTE} from "../utils/consts";
 import {Context} from "../index";
 import {observer} from 'mobx-react';
 import {Container} from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
-import Collection from "./Collection";
-import {COLLECTION_ITEM_ROUTE} from "../utils/consts";
 import "../styles/main.css";
 
 const Main = observer(() => {

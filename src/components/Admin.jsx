@@ -1,12 +1,12 @@
 import {React, useContext, useEffect} from "react";
-import {fetchUsers, deleteUser, changeStatus, changeAdmin} from "../http/userAPI";
-import {Context} from "../index";
 import {useNavigate} from "react-router-dom";
-import {observer} from 'mobx-react';
+import {fetchUsers, deleteUser, changeStatus, changeAdmin} from "../http/userAPI";
 import {USER_COLLECTIONS_ROUTE} from "../utils/consts";
+import {Context} from "../index";
+import {observer} from 'mobx-react';
+import jwtDecode from 'jwt-decode';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from 'react-bootstrap/Button';
-import jwtDecode from 'jwt-decode';
 import '../styles/admin.css';
 
 const Admin = observer(() => {

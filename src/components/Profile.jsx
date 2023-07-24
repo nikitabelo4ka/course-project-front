@@ -1,12 +1,12 @@
 import {React, useContext, useEffect, useState} from "react";
-import Button from "react-bootstrap/Button";
-import {Container, Row} from "react-bootstrap";
-import jwtDecode from 'jwt-decode';
 import {fetchAllUserCollections} from "../http/collectionAPI";
 import {Context} from "../index";
 import {observer} from 'mobx-react';
 import Collection from "./Collection";
 import NewCollectionModal from "../modals/NewCollectionModal";
+import Button from "react-bootstrap/Button";
+import {Container, Row} from "react-bootstrap";
+import jwtDecode from 'jwt-decode';
 import '../styles/profile.css';
 
 const Profile = observer(() => {
